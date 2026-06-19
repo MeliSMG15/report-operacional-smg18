@@ -832,9 +832,14 @@ function commitStation(el){
   if(el.dataset.col==='name'){S.stations[si].name=el.textContent.trim()||'Estação';}
   else if(el.dataset.col==='h'){
     const hi=parseInt(el.dataset.hi,10);
-    const v=parseN(el.textContent);
-    S.stations[si].h[hi]=v;
-    el.textContent=v>0?fmtNum(v):'—';
+    const input=parseN(el.textContent);
+    // Mesma logica da Alocacao "No Carrinho": input cumulativo, armazena delta.
+    // Soma das horas anteriores DESSA estacao; se hora anterior eh 0, nao conta.
+    let prevCum=0;
+    for(let j=0;j<hi;j++)prevCum+=(S.stations[si].h[j]||0);
+    const delta=Math.max(0,input-prevCum);
+    S.stations[si].h[hi]=delta;
+    el.textContent=delta>0?fmtNum(delta):'—';
   }
   renderAll();
   syncSet('stations',S.stations);

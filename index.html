@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Report Operacional SMG14</title>
+<title>Report Operacional SMG18</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
@@ -299,7 +299,7 @@ tr.gap-row td{font-size:11px;}
     <span class="sync-status syncing" id="syncStatus" title="Sincronização com Firebase">⏳ CONECTANDO</span>
     <button id="printBtn" class="today-btn" title="Baixar print em alta resolução">📷 PRINT</button>
   </div>
-  <div class="brand">REPORT <span>OPERACIONAL</span> <small style="font-size:.55em;letter-spacing:2px;opacity:.85;color:#fff;">· SMG14</small></div>
+  <div class="brand">REPORT <span>OPERACIONAL</span> <small style="font-size:.55em;letter-spacing:2px;opacity:.85;color:#fff;">· SMG18</small></div>
   <div class="topbar-right">
     <div class="clock-box">
       <div id="clock">--:--:--</div>
@@ -495,7 +495,7 @@ try{
 // Contexto (data + turno) define o caminho no Firebase: reports/{YYYY-MM-DD}/{AM|PM}
 function todayISO(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 let currentDate=todayISO(), currentShift='AM';
-function buildStateRef(){return syncEnabled?fbDb.ref(`reports-SMG14/${currentDate}/${currentShift}`):null;}
+function buildStateRef(){return syncEnabled?fbDb.ref(`reports-SMG18/${currentDate}/${currentShift}`):null;}
 let isApplyingRemote=false;
 let pendingRemoteUpdate=null;
 
@@ -1228,3 +1228,4 @@ init();
 </script>
 </body>
 </html>
+
